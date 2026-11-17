@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Marginália - Livros</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=DM+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <a href="#" onclick="voltar()">→ Livros</a>
+
+        <h1>Marginália ✳</h1>
+
+        <button onclick="mudarTema()">☾</button>
+    </header>
+
+
+    <!-- CATÁLOGO -->
+    <main id="catalogo">
+
+        <section class="inicio">
+            <p>UM UNIVERSO DE HISTÓRIAS</p>
+
+            <h2>Livros para descobrir.<br>Histórias para permanecer.</h2>
+
+            <p>Encontre sua próxima leitura favorita.</p>
+        </section>
+
+
+        <!-- PESQUISA -->
+        <div class="barra-pesquisa">
+            <input
+                type="text"
+                id="pesquisa"
+                placeholder="Digite o nome de um livro ou autor..."
+            >
+        
+            <button onclick="pesquisar()">Pesquisar</button>
+        </div>
+        
+        <div class="livros" id="resultados"></div>
+        >
+
+
+        <!-- GÊNEROS -->
+        <section class="generos">
+
+            <h2>Explore por gênero</h2>
+
+            <button onclick="filtrar('Todos')">Todos</button>
+            <button onclick="filtrar('Romance')">Romance</button>
+            <button onclick="filtrar('Suspense')">Suspense</button>
+            <button onclick="filtrar('Fantasia')">Fantasia</button>
+
+        </section>
+
+
+        <!-- LIVROS -->
+        <section>
+
+            <h2>Novidades e destaques</h2>
+
+            <div class="livros">
+
+                <article class="livro" data-genero="Romance">
+
+                    <div class="capa amarelo">
+                        <img src="https://covers.openlibrary.org/b/isbn/9786555653304-L.jpg" alt="A Hipótese do Amor">
+                    </div>
+
+                    <p>ALI HAZELWOOD</p>
+                    <h3>A Hipótese do Amor</h3>
+                    <button onclick="abrirLivro(0)">Ver livro</button>
+
+                </article>
+
+
+                <article class="livro" data-genero="Suspense">
+
+                    <div class="capa verde">
+                        <img src="https://covers.openlibrary.org/b/isbn/9786555655063-L.jpg" alt="A Empregada">
+                    </div>
+
+                    <p>FREIDA MCFADDEN</p>
+                    <h3>A Empregada</h3>
+                    <button onclick="abrirLivro(1)">Ver livro</button>
+
+                </article>
+
+
+                <article class="livro" data-genero="Fantasia">
+
+                    <div class="capa lilas">
+                        <img src="https://covers.openlibrary.org/b/isbn/9788542225853-L.jpg" alt="Quarta Asa">
+                    </div>
+
+                    <p>REBECCA YARROS</p>
+                    <h3>Quarta Asa</h3>
+                    <button onclick="abrirLivro(2)">Ver livro</button>
+
+                </article>
+
+            </div>
+
+            <p id="mensagem" hidden>Nenhum livro encontrado.</p>
+
+        </section>
+
+    </main>
+
+
+    <!-- DETALHES DO LIVRO -->
+    <main id="detalhes" hidden>
+
+        <button onclick="voltar()">← Voltar aos livros</button>
+
+        <section class="pagina-livro">
+
+            <div>
+                <img id="capa-detalhe" src="" alt="Capa do livro">
+                <p id="ano"></p>
+                <p id="editora"></p>
+            </div>
+
+            <div>
+                <p id="autor"></p>
+                <h2 id="titulo"></h2>
+                <p id="genero"></p>
+
+                <h3>Sobre o livro</h3>
+                <p id="sinopse"></p>
+
+                <button onclick="favoritar()">♡ Favoritos</button>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+    <footer>
+        <h2>Marginália ✳</h2>
+        <p>Leia. Descubra. Compartilhe.</p>
+        <p>© 2026 Marginália</p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

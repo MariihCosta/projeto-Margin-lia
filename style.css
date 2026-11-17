@@ -1,0 +1,263 @@
+
+/* CONFIGURAÇÕES GERAIS */
+
+body {
+    margin: 0;
+    background: #e9e7e1;
+    color: #292929;
+    font-family: 'DM Sans', sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: normal;
+}
+
+button {
+    cursor: pointer;
+    padding: 10px 16px;
+    border: 1px solid #333;
+    background: transparent;
+    color: inherit;
+}
+
+
+/* CABEÇALHO */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    border-bottom: 1px solid #ccc;
+}
+
+header a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+header h1 {
+    font-style: italic;
+}
+
+
+/* APRESENTAÇÃO */
+
+.inicio {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.inicio h2 {
+    font-size: 40px;
+}
+
+.inicio p {
+    color: #666;
+}
+
+
+/* PESQUISA */
+
+#pesquisa {
+    display: block;
+    width: 80%;
+    max-width: 450px;
+    margin: 20px auto;
+    padding: 13px;
+    background: transparent;
+    border: 1px solid #999;
+}
+
+
+/* GÊNEROS */
+
+.generos {
+    padding: 25px 5%;
+}
+
+.generos button {
+    border-radius: 25px;
+    margin: 5px;
+}
+
+
+/* CATÁLOGO */
+
+body > main {
+    padding-bottom: 40px;
+}
+
+body > main > section:not(.inicio):not(.generos) {
+    padding: 20px 5%;
+}
+
+body > main > section > h2 {
+    margin-bottom: 25px;
+}
+
+.livros {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.livro {
+    text-align: left;
+}
+
+.capa {
+    height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.amarelo {
+    background: #eadb9c;
+}
+
+.verde {
+    background: #83aaa2;
+}
+
+.lilas {
+    background: #c9bfd8;
+}
+
+.capa img {
+    height: 220px;
+    max-width: 75%;
+    object-fit: contain;
+    box-shadow: 0 8px 15px #0003;
+}
+
+.livro p, .livro h3, .livro button {
+    margin-left: 15px;
+}
+
+.livro h3 {
+    font-size: 22px;
+}
+
+
+/* DETALHES DO LIVRO */
+
+.pagina-livro {
+    background: #c9bfd8;
+    padding: 50px 8%;
+    display: grid;
+    grid-template-columns: 35% 1fr;
+    gap: 40px;
+    min-height: 500px;
+}
+
+.pagina-livro img {
+    width: 100%;
+    max-width: 280px;
+    height: 380px;
+    object-fit: contain;
+    box-shadow: 0 10px 20px #0003;
+}
+
+.pagina-livro h2 {
+    font-size: 38px;
+}
+
+.pagina-livro p {
+    line-height: 1.6;
+}
+
+
+/* RODAPÉ */
+
+footer {
+    text-align: center;
+    padding: 35px;
+    background: #dedbd4;
+}
+
+
+/* MODO ESCURO */
+
+.escuro {
+    background: #252525;
+    color: #eee;
+}
+
+.escuro header,
+.escuro footer {
+    background: #333;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 650px) {
+
+    .livros {
+        grid-template-columns: 1fr;
+    }
+
+    .pagina-livro {
+        grid-template-columns: 1fr;
+    }
+
+    .pagina-livro img {
+        display: block;
+        margin: auto;
+    }
+
+    .inicio h2 {
+        font-size: 30px;
+    }
+
+}
+
+.barra-pesquisa {
+    display: flex;
+    gap: 10px;
+    max-width: 550px;
+    margin: 25px auto;
+    padding: 0 15px;
+}
+
+.barra-pesquisa input {
+    flex: 1;
+    min-width: 0;
+    padding: 13px;
+    border: 1px solid #999;
+    background: transparent;
+}
+
+#resultados {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 20px 5%;
+}
+
+#resultados .livro {
+    padding-bottom: 20px;
+}
+
+#resultados .capa {
+    min-height: 280px;
+}
+
+#resultados .capa img {
+    max-width: 75%;
+    height: 210px;
+    object-fit: contain;
+}
+
+@media (max-width: 650px) {
+    #resultados {
+        grid-template-columns: 1fr;
+    }
+
+    .barra-pesquisa {
+        flex-wrap: wrap;
+    }
+}
