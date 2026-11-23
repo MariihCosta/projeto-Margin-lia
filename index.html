@@ -4,158 +4,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Marginália - Livros</title>
+    <title>Marginália - Clube do Livro</title>
 
     <link rel="stylesheet" href="style.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=DM+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <!-- CABEÇALHO -->
-    <header>
-        <a href="#" onclick="voltar()">→ Livros</a>
-
-        <h1>Marginália ✳</h1>
-
+<header>
+    <h1>Marginália ✳</h1>
+    <nav>
+        <a href="#" onclick="voltarComunidade()">Comunidade</a>
         <button onclick="mudarTema()">☾</button>
-    </header>
+    </nav>
+</header>
 
+<main>
 
-    <!-- CATÁLOGO -->
-    <main id="catalogo">
-
-        <section class="inicio">
-            <p>UM UNIVERSO DE HISTÓRIAS</p>
-
-            <h2>Livros para descobrir.<br>Histórias para permanecer.</h2>
-
-            <p>Encontre sua próxima leitura favorita.</p>
-        </section>
-
-
-        <!-- PESQUISA -->
-        <div class="barra-pesquisa">
-            <input
-                type="text"
-                id="pesquisa"
-                placeholder="Digite o nome de um livro ou autor..."
-            >
-        
-            <button onclick="pesquisar()">Pesquisar</button>
+    <section class="inicio">
+        <p class="etiqueta">UM UNIVERSO DE HISTÓRIAS</p>
+        <h2>Livros para descobrir.<br>Histórias para permanecer.</h2>
+        <p>Um espaço para compartilhar leituras e conhecer novas histórias.</p>
+    </section>
+    
+    <section class="livro-mes">
+        <div class="destaque">
+            <div>
+                <p class="etiqueta">✳ ESCOLHA DA COMUNIDADE</p>
+                <h2>Livro do mês</h2>
+                <h3>Amor Teoricamente</h3>
+                <p>Ali Hazelwood</p>
+                <p>
+                    Uma história que mistura ciência, rivalidade acadêmica
+                    e sentimentos inesperados.
+                </p>
+                <button onclick="abrirLivro(4)">Conhecer o livro</button>
+            </div>
+    
+            <img src="imagens/teoricamente.jpg"
+                 alt="Capa de Amor Teoricamente">
         </div>
-        
-        <div class="livros" id="resultados"></div>
-        >
+    </section>
 
+    <section id="comunidade" class="secao">
+        <p class="etiqueta">NOSSA COMUNIDADE LITERÁRIA</p>
+        <h2>Histórias que já passaram por aqui.</h2>
+        <p class="descricao">Escolha um livro e descubra o que existe entre suas páginas.</p>
 
-        <!-- GÊNEROS -->
-        <section class="generos">
+        <div id="lista-livros" class="livros"></div>
+    </section>
 
-            <h2>Explore por gênero</h2>
+    <section id="detalhes" hidden>
+        <button class="voltar" onclick="voltarComunidade()">← Voltar aos livros</button>
 
-            <button onclick="filtrar('Todos')">Todos</button>
-            <button onclick="filtrar('Romance')">Romance</button>
-            <button onclick="filtrar('Suspense')">Suspense</button>
-            <button onclick="filtrar('Fantasia')">Fantasia</button>
+        <div class="detalhe-livro">
+            <img id="foto-livro" src="" alt="Capa do livro">
 
-        </section>
-
-
-        <!-- LIVROS -->
-        <section>
-
-            <h2>Novidades e destaques</h2>
-
-            <div class="livros">
-
-                <article class="livro" data-genero="Romance">
-
-                    <div class="capa amarelo">
-                        <img src="https://covers.openlibrary.org/b/isbn/9786555653304-L.jpg" alt="A Hipótese do Amor">
-                    </div>
-
-                    <p>ALI HAZELWOOD</p>
-                    <h3>A Hipótese do Amor</h3>
-                    <button onclick="abrirLivro(0)">Ver livro</button>
-
-                </article>
-
-
-                <article class="livro" data-genero="Suspense">
-
-                    <div class="capa verde">
-                        <img src="https://covers.openlibrary.org/b/isbn/9786555655063-L.jpg" alt="A Empregada">
-                    </div>
-
-                    <p>FREIDA MCFADDEN</p>
-                    <h3>A Empregada</h3>
-                    <button onclick="abrirLivro(1)">Ver livro</button>
-
-                </article>
-
-
-                <article class="livro" data-genero="Fantasia">
-
-                    <div class="capa lilas">
-                        <img src="https://covers.openlibrary.org/b/isbn/9788542225853-L.jpg" alt="Quarta Asa">
-                    </div>
-
-                    <p>REBECCA YARROS</p>
-                    <h3>Quarta Asa</h3>
-                    <button onclick="abrirLivro(2)">Ver livro</button>
-
-                </article>
-
+            <div class="informacoes">
+                <p class="etiqueta">CONHEÇA A HISTÓRIA</p>
+                <h2 id="titulo-livro"></h2>
+                <p id="autor-livro" class="autor"></p>
+                <p id="sinopse-livro" class="sinopse"></p>
             </div>
+        </div>
 
-            <p id="mensagem" hidden>Nenhum livro encontrado.</p>
+        <section class="comentarios">
+            <p class="etiqueta">ESPAÇO DOS LEITORES</p>
+            <h2>O que estão dizendo?</h2>
+            <div id="lista-feedbacks"></div>
 
-        </section>
+            <div class="formulario">
+                <h3>Compartilhe sua opinião</h3>
 
-    </main>
-
-
-    <!-- DETALHES DO LIVRO -->
-    <main id="detalhes" hidden>
-
-        <button onclick="voltar()">← Voltar aos livros</button>
-
-        <section class="pagina-livro">
-
-            <div>
-                <img id="capa-detalhe" src="" alt="Capa do livro">
-                <p id="ano"></p>
-                <p id="editora"></p>
+                <form id="form-feedback">
+                    <input id="nome" placeholder="Seu nome (opcional)">
+                    <textarea id="opiniao" placeholder="Conte o que achou da leitura..." required></textarea>
+                    <button type="submit">Publicar opinião</button>
+                </form>
             </div>
-
-            <div>
-                <p id="autor"></p>
-                <h2 id="titulo"></h2>
-                <p id="genero"></p>
-
-                <h3>Sobre o livro</h3>
-                <p id="sinopse"></p>
-
-                <button onclick="favoritar()">♡ Favoritos</button>
-            </div>
-
         </section>
+    </section>
 
-    </main>
+</main>
 
+<footer>
+    <h2>Marginália ✳</h2>
+    <p>Leia. Descubra. Compartilhe.</p>
+    <p>© 2026 Marginália</p>
+</footer>
 
-    <!-- RODAPÉ -->
-    <footer>
-        <h2>Marginália ✳</h2>
-        <p>Leia. Descubra. Compartilhe.</p>
-        <p>© 2026 Marginália</p>
-    </footer>
-
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>

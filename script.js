@@ -1,363 +1,167 @@
 
-// LIVROS DO CATÁLOGO
+// LIVROS DA COMUNIDADE
 
-let livros = [
-    {
-        titulo: "A Hipótese do Amor",
-        autor: "Ali Hazelwood",
-        genero: "Romance",
-        ano: "2022",
-        editora: "Arqueiro",
-        capa: "https://covers.openlibrary.org/b/isbn/9786555653304-L.jpg",
-        sinopse: "Olive é uma estudante de doutorado que acaba entrando em um relacionamento de mentira com Adam. O que começa como um acordo pode se transformar em uma história de amor."
-    },
-
-    {
-        titulo: "A Empregada",
-        autor: "Freida McFadden",
-        genero: "Suspense",
-        ano: "2023",
-        editora: "Arqueiro",
-        capa: "https://covers.openlibrary.org/b/isbn/9786555655063-L.jpg",
-        sinopse: "Millie consegue um emprego em uma casa aparentemente perfeita, mas começa a descobrir que seus patrões escondem muitos segredos."
-    },
-
-    {
-        titulo: "Quarta Asa",
-        autor: "Rebecca Yarros",
-        genero: "Fantasia",
-        ano: "2024",
-        editora: "Planeta Minotauro",
-        capa: "https://covers.openlibrary.org/b/isbn/9788542225853-L.jpg",
-        sinopse: "Violet precisa enfrentar os desafios de uma academia de cavaleiros de dragões e descobrir sua própria força para sobreviver."
-    }
+const livros = [
+  {
+      titulo: "A Hipótese do Amor",
+      autor: "Ali Hazelwood",
+      capa: "imagens/hipotese.jpg",
+      sinopse: "Olive Smith é uma estudante de doutorado que acredita mais na ciência do que no amor. Para ajudar sua melhor amiga, ela acaba entrando em um relacionamento de mentira com Adam Carlsen, um professor conhecido por sua personalidade difícil. O que começa como um simples acordo se transforma em uma experiência cheia de descobertas, situações divertidas e sentimentos inesperados. Entre a rotina acadêmica e as surpresas da convivência, Olive percebe que nem tudo na vida pode ser explicado pela ciência."
+  },
+  {
+      titulo: "O Príncipe Cruel",
+      autor: "Holly Black",
+      capa: "imagens/principe.jpg",
+      sinopse: "Jude Duarte é humana, mas cresceu no Reino das Fadas, um lugar mágico onde os humanos são tratados como inferiores. Determinada a conquistar seu espaço, ela precisa aprender a sobreviver em meio a intrigas, disputas políticas e jogos de poder. Seu maior desafio é lidar com Cardan, um príncipe arrogante que parece fazer de tudo para dificultar sua vida. Em um mundo onde confiança é rara, Jude descobre que inteligência e coragem podem ser suas maiores armas."
+  },
+  {
+      titulo: "O Rei Perverso",
+      autor: "Holly Black",
+      capa: "imagens/rei.jpg",
+      sinopse: "Depois dos acontecimentos de O Príncipe Cruel, Jude conquistou uma posição importante na corte das fadas, mas manter o poder se mostra ainda mais difícil do que conquistá-lo. Cercada por inimigos, alianças frágeis e segredos, ela precisa agir com cuidado para proteger seus interesses. Enquanto Cardan ocupa o trono, Jude se envolve em uma disputa política repleta de estratégias, traições e decisões complicadas."
+  },
+  {
+      titulo: "A Rainha do Nada",
+      autor: "Holly Black",
+      capa: "imagens/rainha.jpg",
+      sinopse: "No último volume da trilogia O Povo do Ar, Jude precisa enfrentar as consequências de suas escolhas e encontrar uma maneira de recuperar seu lugar no mundo das fadas. Mesmo distante da corte, os conflitos continuam acontecendo, e antigas rivalidades voltam a fazer parte de sua realidade. Entre magia, profecias, disputas pelo poder e sentimentos complicados, Jude terá que descobrir até onde está disposta a ir para proteger aquilo que considera importante."
+  },
+  {
+      titulo: "Amor Teoricamente",
+      autor: "Ali Hazelwood",
+      capa: "imagens/teoricamente.jpg",
+      sinopse: "Elsie Hannaway é uma física teórica que divide sua rotina entre a carreira acadêmica e um trabalho pouco convencional: fingir ser a namorada perfeita para clientes. Sua oportunidade de conquistar estabilidade profissional surge quando aparece uma vaga em uma universidade de prestígio. Porém, existe um obstáculo: Jack Smith, um físico experimental que pode influenciar diretamente seu futuro, não parece ter uma boa opinião sobre ela. Entre rivalidades científicas, diferenças profissionais e sentimentos inesperados, Elsie começa a questionar suas próprias certezas."
+  }
 ];
 
 
-// ABRIR UM LIVRO
+// MOSTRAR OS LIVROS NA COMUNIDADE
 
-function abrirLivro(numero) {
+const listaLivros = document.getElementById("lista-livros");
 
-    let livro = livros[numero];
+livros.forEach((livro, indice) => {
 
-    document.getElementById("catalogo").hidden = true;
-    document.getElementById("detalhes").hidden = false;
+  const card = document.createElement("article");
+  card.className = "livro";
 
-    document.getElementById("capa-detalhe").src = livro.capa;
-    document.getElementById("titulo").innerText = livro.titulo;
-    document.getElementById("autor").innerText = livro.autor;
-    document.getElementById("genero").innerText = livro.genero;
-    document.getElementById("ano").innerText = livro.ano;
-    document.getElementById("editora").innerText = livro.editora;
-    document.getElementById("sinopse").innerText = livro.sinopse;
+  card.innerHTML = `
+      <img src="${livro.capa}" alt="Capa de ${livro.titulo}">
+      <h3>${livro.titulo}</h3>
+      <p>${livro.autor}</p>
+      <button onclick="abrirLivro(${indice})">Conhecer livro</button>
+  `;
 
-    document.getElementById("favorito").innerText = "♡ Favoritos";
-
-    window.scrollTo(0, 0);
-}
+  listaLivros.appendChild(card);
+});
 
 
-// VOLTAR AO CATÁLOGO
+// ABRIR A PÁGINA DO LIVRO
 
-function voltar() {
+let livroAtual = 0;
 
-    document.getElementById("detalhes").hidden = true;
-    document.getElementById("catalogo").hidden = false;
+function abrirLivro(indice) {
 
-}
+  livroAtual = indice;
 
+  const livro = livros[indice];
 
-// FILTRAR POR GÊNERO
-
-function filtrar(genero) {
-
-    let cards = document.querySelectorAll(".livro");
-
-    cards.forEach(function(card) {
-
-        if (genero === "Todos" || card.dataset.genero === genero) {
-            card.style.display = "block";
-        } else {
-            card.style.display = "none";
-        }
-
-    });
-
-}
-
-
-// PESQUISAR LIVROS
-
-
- let resultados = [];
-
- async function pesquisar() {
-  const nome = document.getElementById("pesquisa").value.trim();
-  const area = document.getElementById("resultados");
-
-  if (nome === "") {
-    alert("Digite o nome de um livro ou autor!");
-    return;
-  }
-
-  area.innerHTML = "<p>Buscando livros...</p>";
-
-  try {
-    const resposta = await fetch(
-      "https://openlibrary.org/search.json?q=" +
-      encodeURIComponent(nome) + "&limit=12"
-    );
-
-    const dados = await resposta.json();
-
-    // Busca a sinopse e os gêneros de cada livro
-    resultados = await Promise.all(
-      dados.docs.map(async function(livro) {
-        let sinopse = "Sinopse não disponível.";
-        let generos = livro.subject ? livro.subject.slice(0, 3) : [];
-
-        try {
-          if (livro.key) {
-            const detalhe = await fetch(
-              "https://openlibrary.org" + livro.key + ".json"
-            );
-
-            const informacoes = await detalhe.json();
-
-            if (informacoes.description) {
-              sinopse = typeof informacoes.description === "string"
-                ? informacoes.description
-                : informacoes.description.value;
-            }
-
-            if (informacoes.subjects) {
-              generos = informacoes.subjects.slice(0, 3);
-            }
-          }
-        } catch (erro) {
-          console.log("Não foi possível carregar os detalhes.");
-        }
-
-        return {
-          ...livro,
-          sinopse: sinopse,
-          generos: generos
-        };
-      })
-    );
-
-    area.innerHTML = "";
-
-    if (resultados.length === 0) {
-      area.innerHTML = "<p>Nenhum livro encontrado.</p>";
-      return;
-    }
-
-    resultados.forEach(function(livro, i) {
-      const card = document.createElement("article");
-      card.className = "livro";
-
-      const capa = document.createElement("img");
-      capa.alt = "Capa de " + livro.title;
-
-      if (livro.cover_i) {
-        capa.src = "https://covers.openlibrary.org/b/id/" +
-          livro.cover_i + "-M.jpg";
-      }
-
-      const titulo = document.createElement("h3");
-      titulo.textContent = livro.title;
-
-      const autor = document.createElement("p");
-      autor.textContent = livro.author_name
-        ? livro.author_name[0]
-        : "Autor desconhecido";
-
-      const genero = document.createElement("p");
-      genero.textContent = "Gênero: " +
-        (livro.generos.length ? livro.generos.join(", ") : "Não informado");
-
-      const sinopse = document.createElement("p");
-      sinopse.textContent = "Sinopse: " + livro.sinopse;
-
-      const botao = document.createElement("button");
-      botao.textContent = "Ver detalhes";
-      botao.onclick = function() {
-        abrirResultado(i);
-      };
-
-      card.append(capa, titulo, autor, genero, sinopse, botao);
-      area.appendChild(card);
-    });
-
-  } catch (erro) {
-    area.innerHTML = "<p>Erro ao buscar os livros. Tente novamente.</p>";
-  }
-}
-
-function abrirResultado(numero) {
-  const livro = resultados[numero];
-
-  document.getElementById("catalogo").hidden = true;
+  document.getElementById("comunidade").hidden = true;
   document.getElementById("detalhes").hidden = false;
 
-  document.getElementById("capa-detalhe").src =
-    livro.cover_i
-      ? "https://covers.openlibrary.org/b/id/" + livro.cover_i + "-L.jpg"
-      : "";
+  document.getElementById("foto-livro").src = livro.capa;
+  document.getElementById("foto-livro").alt = "Capa de " + livro.titulo;
+  document.getElementById("titulo-livro").textContent = livro.titulo;
+  document.getElementById("autor-livro").textContent = livro.autor;
+  document.getElementById("sinopse-livro").textContent = livro.sinopse;
 
-  document.getElementById("titulo").textContent = livro.title;
+  mostrarFeedbacks();
+  window.scrollTo(0, 0);
+}
 
-  document.getElementById("autor").textContent =
-    livro.author_name
-      ? livro.author_name.join(", ")
-      : "Autor desconhecido";
 
-  document.getElementById("genero").textContent =
-    livro.generos.length
-      ? livro.generos.join(", ")
-      : "Gênero não informado";
+// VOLTAR PARA A COMUNIDADE
 
-  document.getElementById("ano").textContent =
-    livro.first_publish_year || "Ano não informado";
+function voltarComunidade() {
 
-  document.getElementById("editora").textContent =
-    livro.publisher ? livro.publisher[0] : "Editora não informada";
-
-  document.getElementById("sinopse").textContent = livro.sinopse;
+  document.getElementById("detalhes").hidden = true;
+  document.getElementById("comunidade").hidden = false;
 
   window.scrollTo(0, 0);
 }
 
 
+// SALVAR E MOSTRAR COMENTÁRIOS
 
-// MODO CLARO E ESCURO
+let feedbacks = JSON.parse(localStorage.getItem("feedbacks") || "{}");
+
+function mostrarFeedbacks() {
+
+  const area = document.getElementById("lista-feedbacks");
+  const nomeLivro = livros[livroAtual].titulo;
+
+  area.innerHTML = "";
+
+  const comentarios = feedbacks[nomeLivro] || [];
+
+  if (comentarios.length === 0) {
+      area.innerHTML = '<p class="sem-comentarios">Ainda não existem opiniões. Seja a primeira pessoa a comentar!</p>';
+      return;
+  }
+
+  comentarios.forEach(item => {
+
+      const card = document.createElement("div");
+      card.className = "comentario";
+
+      const nome = document.createElement("strong");
+      nome.textContent = item.nome;
+
+      const texto = document.createElement("p");
+      texto.textContent = item.opiniao;
+
+      card.append(nome, texto);
+      area.appendChild(card);
+  });
+}
+
+
+// ENVIAR OPINIÃO
+
+document.getElementById("form-feedback").addEventListener("submit", function(event) {
+
+  event.preventDefault();
+
+  const nome = document.getElementById("nome").value.trim() || "Leitor(a)";
+  const opiniao = document.getElementById("opiniao").value.trim();
+  const nomeLivro = livros[livroAtual].titulo;
+
+  if (!opiniao) return;
+
+  if (!feedbacks[nomeLivro]) {
+      feedbacks[nomeLivro] = [];
+  }
+
+  feedbacks[nomeLivro].push({
+      nome: nome,
+      opiniao: opiniao
+  });
+
+  try {
+      localStorage.setItem("feedbacks", JSON.stringify(feedbacks));
+
+      this.reset();
+      mostrarFeedbacks();
+
+      alert("Sua opinião foi publicada!");
+  } catch (erro) {
+      alert("Não foi possível salvar sua opinião.");
+  }
+
+});
+
+
+// MODO ESCURO
 
 function mudarTema() {
-
-    document.body.classList.toggle("escuro");
-
-}
-
-
-// FAVORITOS
-
-function favoritar() {
-
-    let botao = document.getElementById("favorito");
-
-    if (botao.innerText === "♡ Favoritos") {
-        botao.innerText = "♥ Favoritado";
-    } else {
-        botao.innerText = "♡ Favoritos";
-    }
-
-}
-
-// PESQUISAR LIVROS NA OPEN LIBRARY
-
-let resultados = [];
-
-async function pesquisar() {
-
-    let nome = document.getElementById("pesquisa").value;
-
-    if (nome === "") {
-        alert("Digite o nome de um livro!");
-        return;
-    }
-
-    let endereco = "https://openlibrary.org/search.json?q="
-        + encodeURIComponent(nome)
-        + "&limit=12";
-
-    let resposta = await fetch(endereco);
-
-    let dados = await resposta.json();
-
-    resultados = dados.docs;
-
-    let area = document.getElementById("resultados");
-
-    area.innerHTML = "";
-
-    resultados.forEach(function(livro, i) {
-
-        let capa = livro.cover_i
-            ? "https://covers.openlibrary.org/b/id/" + livro.cover_i + "-M.jpg"
-            : "";
-
-        let autor = livro.author_name
-            ? livro.author_name[0]
-            : "Autor desconhecido";
-
-        area.innerHTML += `
-            <article class="livro">
-
-                <div class="capa">
-                    ${capa
-                        ? `<img src="${capa}" alt="Capa de ${livro.title}">`
-                        : "<p>Sem capa disponível</p>"
-                    }
-                </div>
-
-                <p>${autor}</p>
-
-                <h3>${livro.title}</h3>
-
-                <button onclick="abrirResultado(${i})">
-                    Ver livro
-                </button>
-
-            </article>
-        `;
-
-    });
-
-    if (resultados.length === 0) {
-        area.innerHTML = "<p>Nenhum livro encontrado.</p>";
-    }
-
-}
-
-
-// ABRIR OS DETALHES DO LIVRO PESQUISADO
-
-function abrirResultado(numero) {
-
-    let livro = resultados[numero];
-
-    document.getElementById("catalogo").hidden = true;
-    document.getElementById("detalhes").hidden = false;
-
-    document.getElementById("capa-detalhe").src =
-        livro.cover_i
-        ? "https://covers.openlibrary.org/b/id/" + livro.cover_i + "-L.jpg"
-        : "";
-
-    document.getElementById("titulo").innerText = livro.title;
-
-    document.getElementById("autor").innerText =
-        livro.author_name
-        ? livro.author_name.join(", ")
-        : "Autor desconhecido";
-
-    document.getElementById("genero").innerText =
-        livro.subject
-        ? livro.subject.slice(0, 3).join(", ")
-        : "Gênero não informado";
-
-    document.getElementById("ano").innerText =
-        livro.first_publish_year || "Ano não informado";
-
-    document.getElementById("editora").innerText =
-        livro.publisher
-        ? livro.publisher[0]
-        : "Editora não informada";
-
-    document.getElementById("sinopse").innerText =
-        "Conheça esta obra e descubra uma nova história para sua próxima leitura.";
-
-    window.scrollTo(0, 0);
-
+  document.body.classList.toggle("escuro");
 }
