@@ -5,31 +5,31 @@ const livros = [
   {
       titulo: "A Hipótese do Amor",
       autor: "Ali Hazelwood",
-      capa: "imagens/hipotese.jpg",
+      capa: "la-hipotesis-del-amor-3d.png",
       sinopse: "Olive Smith é uma estudante de doutorado que acredita mais na ciência do que no amor. Para ajudar sua melhor amiga, ela acaba entrando em um relacionamento de mentira com Adam Carlsen, um professor conhecido por sua personalidade difícil. O que começa como um simples acordo se transforma em uma experiência cheia de descobertas, situações divertidas e sentimentos inesperados. Entre a rotina acadêmica e as surpresas da convivência, Olive percebe que nem tudo na vida pode ser explicado pela ciência."
   },
   {
       titulo: "O Príncipe Cruel",
       autor: "Holly Black",
-      capa: "imagens/principe.jpg",
+      capa: "the-cruel-prince-3d.png",
       sinopse: "Jude Duarte é humana, mas cresceu no Reino das Fadas, um lugar mágico onde os humanos são tratados como inferiores. Determinada a conquistar seu espaço, ela precisa aprender a sobreviver em meio a intrigas, disputas políticas e jogos de poder. Seu maior desafio é lidar com Cardan, um príncipe arrogante que parece fazer de tudo para dificultar sua vida. Em um mundo onde confiança é rara, Jude descobre que inteligência e coragem podem ser suas maiores armas."
   },
   {
       titulo: "O Rei Perverso",
       autor: "Holly Black",
-      capa: "imagens/rei.jpg",
+      capa: "o-rei-perverso-3d.png",
       sinopse: "Depois dos acontecimentos de O Príncipe Cruel, Jude conquistou uma posição importante na corte das fadas, mas manter o poder se mostra ainda mais difícil do que conquistá-lo. Cercada por inimigos, alianças frágeis e segredos, ela precisa agir com cuidado para proteger seus interesses. Enquanto Cardan ocupa o trono, Jude se envolve em uma disputa política repleta de estratégias, traições e decisões complicadas."
   },
   {
       titulo: "A Rainha do Nada",
       autor: "Holly Black",
-      capa: "imagens/rainha.jpg",
+      capa: "a-rainha-do-nada-3d.png",
       sinopse: "No último volume da trilogia O Povo do Ar, Jude precisa enfrentar as consequências de suas escolhas e encontrar uma maneira de recuperar seu lugar no mundo das fadas. Mesmo distante da corte, os conflitos continuam acontecendo, e antigas rivalidades voltam a fazer parte de sua realidade. Entre magia, profecias, disputas pelo poder e sentimentos complicados, Jude terá que descobrir até onde está disposta a ir para proteger aquilo que considera importante."
   },
   {
       titulo: "Amor Teoricamente",
       autor: "Ali Hazelwood",
-      capa: "imagens/teoricamente.jpg",
+      capa: "love-theoretically-3d.png",
       sinopse: "Elsie Hannaway é uma física teórica que divide sua rotina entre a carreira acadêmica e um trabalho pouco convencional: fingir ser a namorada perfeita para clientes. Sua oportunidade de conquistar estabilidade profissional surge quando aparece uma vaga em uma universidade de prestígio. Porém, existe um obstáculo: Jack Smith, um físico experimental que pode influenciar diretamente seu futuro, não parece ter uma boa opinião sobre ela. Entre rivalidades científicas, diferenças profissionais e sentimentos inesperados, Elsie começa a questionar suas próprias certezas."
   }
 ];
