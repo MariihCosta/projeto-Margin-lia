@@ -49,15 +49,56 @@
                  alt="Capa de Amor Teoricamente">
         </div>
     </section>
+    <section class="secao depoimentos">
+    <p class="etiqueta">O QUE OS LEITORES DIZEM</p>
+    <h2>Opiniões do clube</h2>
 
+    <div class="carrossel">
+        <button onclick="mudarDepoimento(-1)" aria-label="Opinião anterior">‹</button>
+
+        <blockquote>
+            <p id="texto-depoimento"></p>
+            <cite id="autor-depoimento"></cite>
+        </blockquote>
+
+        <button onclick="mudarDepoimento(1)" aria-label="Próxima opinião">›</button>
+    </div>
+ </section>
     <section id="comunidade" class="secao">
         <p class="etiqueta">NOSSA COMUNIDADE LITERÁRIA</p>
         <h2>Histórias que já passaram por aqui.</h2>
         <p class="descricao">Escolha um livro e descubra o que existe entre suas páginas.</p>
+    <div class="busca">
+    <input id="busca" type="search" placeholder="Pesquisar por título ou autor..." aria-label="Pesquisar livros" oninput="mostrarLivros()">
+</div>
 
+<div class="abas">
+    <button class="ativa" onclick="trocarAba('Todos', this)">Todos</button>
+    <button onclick="trocarAba('Romance', this)">Romance</button>
+    <button onclick="trocarAba('Fantasia', this)">Fantasia</button>
+</div>
         <div id="lista-livros" class="livros"></div>
     </section>
+<section id="contato" class="secao contato">
+    <p class="etiqueta">FALE COM A GENTE</p>
+    <h2>Sugira um livro ou tire uma dúvida.</h2>
 
+    <div class="formulario">
+        <form id="form-contato">
+            <label for="contato-nome">Nome</label>
+            <input id="contato-nome" required>
+
+            <label for="contato-email">E-mail</label>
+            <input id="contato-email" type="email" required>
+
+            <label for="contato-mensagem">Mensagem</label>
+            <textarea id="contato-mensagem" required></textarea>
+
+            <button type="submit">Enviar mensagem</button>
+            <p id="retorno-contato" role="status"></p>
+        </form>
+    </div>
+</section>
     <section id="detalhes" hidden>
         <button class="voltar" onclick="voltarComunidade()">← Voltar aos livros</button>
 
