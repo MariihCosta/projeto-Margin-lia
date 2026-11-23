@@ -135,6 +135,7 @@ nav button {
     background: transparent;
     font-size: 15px;
     margin-bottom: 35px;
+    color: inherit;        
 }
 
 .detalhe-livro {
